@@ -1,0 +1,16 @@
+/* Default styles */
+body {
+    /* Other styles for your document */
+  }
+  
+  /* Landscape orientation styles */
+  @media print, (orientation: landscape) {
+    @page {
+      size: landscape;
+    }
+  
+    body {
+      /* Add any additional styles for landscape mode */
+    }
+  }
+  
