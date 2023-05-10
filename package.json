@@ -1,0 +1,17 @@
+{
+    "name": "map",
+    "version": "1.0.0",
+    "description": "Your project description",
+    "main": "index.html",
+    "scripts": {
+      "start": "node index.js",
+      "test": "mocha"
+    },
+    "dependencies": {
+      "aws-sdk": "^2.100.0"
+    },
+    "devDependencies": {
+      "mocha": "^9.2.0"
+    }
+  }
+  
