@@ -1,10 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>WFT MAP 1.0</title>
+	<title>WFT MAP 1.01</title>
+	<style>
+		@keyframes rotate {
+		  from {
+		    transform: rotate(0deg);
+		  }
+		  to {
+		    transform: rotate(360deg);
+		  }
+		}
+
+		.animation {
+		  animation-name: rotate;
+		  animation-duration: 1s;
+		  animation-iteration-count: infinite;
+		  animation-timing-function: linear;
+		  text-align: center;
+		  margin-top: 50%;
+		}
+
+		@media only screen and (orientation: portrait) {
+		  #animation {
+		    display: block;
+		  }
+
+		  #image-map-pro {
+		    display: none;
+		  }
+		}
+
+		@media only screen and (orientation: landscape) {
+		  #animation {
+		    display: none;
+		  }
+
+		  #image-map-pro {
+		    display: block;
+		  }
+		}
+	</style>
 </head>
 <body>
-  <div id="image-map-pro"></div>
+	<div id="animation" class="animation">Please rotate your screen to view the map</div>
+	<div id="image-map-pro"></div>
+
+	<script src="image-map-pro.min.js"></script>
 </body>
 
 <script src="image-map-pro.min.js"></script>
