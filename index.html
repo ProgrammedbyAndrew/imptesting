@@ -1,51 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Food Trucks Interactive Map</title>
-    <style>
-      @keyframes flip {
-        0% {
-          transform: rotate(0);
-        }
-        100% {
-          transform: rotate(180deg);
-        }
-      }
-      
-      #flip-phone {
-        display: none;
-        font-size: 2em;
-        text-align: center;
-        animation: flip 2s infinite;
-      }
-  
-      #image-map-pro, #image-map-pro-detached-menu {
-        display: none;
-      }
-  
-      @media (orientation: landscape) {
-        #flip-phone {
-          display: none;
-        }
-        
-        #image-map-pro, #image-map-pro-detached-menu {
-          display: block;
-        }
-      }
-  
-      @media (orientation: portrait) {
-        #flip-phone {
-          display: block;
-        }
-      }
-    </style>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <title>World Food Trucks Interactive Map</title>
+</head>
 <body>
 
   <div id="image-map-pro"></div>
  
+  <div data-imp-detached-menu="My Map"></div>
 
 </body>
 
