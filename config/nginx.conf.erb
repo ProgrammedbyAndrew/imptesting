@@ -1,0 +1,25 @@
+worker_processes 1;
+daemon off;
+
+events {
+  worker_connections 1024;
+}
+
+http {
+  gzip on;
+  gzip_min_length 150;
+  gzip_proxied any;
+  gzip_types text/plain text/css text/js text/xml text/javascript application/javascript application/x-javascript application/json application/xml application/rss+xml image/svg+xml;
+
+  server {
+    listen <%= ENV["PORT"] %>;
+    server_name _;
+    keepalive_timeout 65;
+    root /app;
+    index index.html;
+
+    location / {
+      try_files $uri $uri/ /index.html;
+    }
+  }
+}
