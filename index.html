@@ -31,8 +31,8 @@
   <script>
     function handleOrientation() {
       var isPortrait = window.innerHeight > window.innerWidth;
-      document.getElementById('rotate-message').style.display = isPortrait ? 'none' : 'block';
-      document.getElementById('image-map-pro').style.display = isPortrait ? 'block' : 'none';
+      document.getElementById('rotate-message').style.display = isLanscape ? 'none' : 'block';
+      document.getElementById('image-map-pro').style.display = isLandscape ? 'block' : 'none';
     }
 
     window.addEventListener('resize', handleOrientation);
