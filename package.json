@@ -1,14 +1,15 @@
 {
-    "name": "wft-interactive-map",
-    "version": "1.0.0",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "dependencies": {
-      "express": "^4.17.1"
-    },
-    "engines": {
-      "node": "16.x"
-    }
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve -s public"
+  },
+  "dependencies": {
+    "serve": "^12.0.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
-  
+}
