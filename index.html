@@ -29,7 +29,7 @@
       transform: translate(-50%, -50%);
     }
     #logo {
-      max-width: 150%; /* Increase the size of the logo */
+      max-width: 150%;
       margin-bottom: 20px;
     }
     #rotate-text {
@@ -39,6 +39,27 @@
       font-family: 'Roboto', sans-serif;
       font-weight: 300;
       letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+    #go-back-btn {
+      display: inline-block;
+      background-color: #ff4b4b;
+      color: white;
+      font-size: 18px;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.5s ease;
+    }
+    #rotate-message.show-button #go-back-btn {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -47,8 +68,9 @@
   <div id="image-map-pro"></div>
   <div id="rotate-message">
     <div id="rotate-message-container">
-      <img src="logo.png" alt="Logo" id="logo"> <!-- Update the src attribute here -->
+      <img src="logo.png" alt="Logo" id="logo">
       <div id="rotate-text">Please rotate your phone to view the map.</div>
+      <a href="https://www.worldfoodtrucks.com" id="go-back-btn">Go Back</a>
     </div>
   </div>
 
@@ -56,8 +78,17 @@
   <script>
     function handleOrientation() {
       var isLandscape = window.innerWidth > window.innerHeight;
-      document.getElementById('rotate-message').style.display = isLandscape ? 'none' : 'block';
+      var rotateMessage = document.getElementById('rotate-message');
+      rotateMessage.style.display = isLandscape ? 'none' : 'block';
       document.getElementById('image-map-pro').style.display = isLandscape ? 'block' : 'none';
+      
+      if (!isLandscape) {
+        setTimeout(function() {
+          rotateMessage.classList.add('show-button');
+        }, 500);
+      } else {
+        rotateMessage.classList.remove('show-button');
+      }
     }
 
     window.addEventListener('resize', handleOrientation);
@@ -67,6 +98,7 @@
   </script>
 </body>
 <script src="image-map-pro.min.js"></script>
+
 
 
 
