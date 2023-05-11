@@ -2,13 +2,64 @@
 <html>
 <head>
 	<title>WFT 1.1</title>
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.3em; /* Increase font size by 30% */
+        }
+        #message, #image-map-pro {
+            display: none;
+        }
+        #message {
+            color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.6em; /* Increase font size by 30% */
+            text-align: center;
+        }
+        #logo {
+            width: 260px; /* Increase width by 30% */
+            margin-bottom: 26px; /* Increase margin by 30% */
+        }
+        #rotate-logo {
+            width: 97.5px; /* Increase width by 30% */
+            margin-top: 26px; /* Increase margin by 30% */
+        }
+    </style>
 </head>
 <body>
+  <div id="image-map-pro"></div>
+  <div id="message">
+      <div><img id="logo" src="logo.png" alt="Logo"></div>
+      <div>Please rotate your device.</div>
+      <div><img id="rotate-logo" src="rotate.png" alt="Rotate"></div>
+  </div>
+  
+  <script>
+    function checkOrientation() {
+        var isPortrait = window.matchMedia("(orientation: portrait)").matches;
+        var message = document.getElementById('message');
+        var data = document.getElementById('image-map-pro');
 
-    <div id="image-map-pro"></div>
-  
-  
+        if (isPortrait) {
+            data.style.display = 'none';
+            message.style.display = 'block';
+        } else {
+            data.style.display = 'block';
+            message.style.display = 'none';
+        }
+    }
+
+    window.addEventListener('orientationchange', checkOrientation);
+    window.addEventListener('resize', checkOrientation);
+
+    // Check initial orientation
+    checkOrientation();
+  </script>
 </body>
 <script src="image-map-pro.min.js"></script>
 
