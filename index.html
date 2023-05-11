@@ -2,14 +2,66 @@
 <html>
 <head>
 	<title>WFT 1.1</title>
-
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.3em; /* Increase font size by 30% */
+        }
+        #message, #image-map-pro {
+            display: none;
+        }
+        #message {
+            color: white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.6em; /* Increase font size by 30% */
+            text-align: center;
+        }
+        #logo {
+            width: 260px; /* Increase width by 30% */
+            margin-bottom: 26px; /* Increase margin by 30% */
+        }
+        #rotate-logo {
+            width: 97.5px; /* Increase width by 30% */
+            margin-top: 26px; /* Increase margin by 30% */
+        }
+    </style>
 </head>
 <body>
+  <div id="image-map-pro"></div>
+  <div id="message">
+      <div><img id="logo" src="logo.png" alt="Logo"></div>
+      <div>Please rotate your device.</div>
+      <div><img id="rotate-logo" src="rotate.png" alt="Rotate"></div>
+  </div>
+  
+  <script>
+    function checkOrientation() {
+        var isPortrait = window.matchMedia("(orientation: portrait)").matches;
+        var message = document.getElementById('message');
+        var data = document.getElementById('image-map-pro');
 
-    <div id="image-map-pro"></div>
-  
-  
+        if (isPortrait) {
+            data.style.display = 'none';
+            message.style.display = 'block';
+        } else {
+            data.style.display = 'block';
+            message.style.display = 'none';
+        }
+    }
+
+    window.addEventListener('orientationchange', checkOrientation);
+    window.addEventListener('resize', checkOrientation);
+
+    // Check initial orientation
+    checkOrientation();
+  </script>
 </body>
+
 <script src="image-map-pro.min.js"></script>
 
 <script>ImageMapPro.init('#image-map-pro', {"id":"37cd0c30-2fc3-49b2-ba74-530802dc9ac4","general":{"name":"newmap"},"fullscreen":{"enable_fullscreen_mode":true},"objectConfig":{"glowing_objects":true},"tooltips":{"show_tooltips":"click","fullscreen_tooltips":"none"},"zooming":{"enable_zooming":true,"enable_navigator":false},"object_list":{"enable_object_list":true},"artboards":[{"id":"1410120d-a4eb-433f-90e0-c126f93961e9","background_type":"image","image_url":"https://wftmap.com/wp-content/uploads/2023/04/map.jpg","width":2600,"height":1471.6981132075473,"children":[{"id":"60be74c8-c55d-49ef-af5e-6da5c0b3ef30","title":"1. DELI LATIN FOOD","type":"oval","x":90.3934129774803,"y":88.06376517746294,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"1. Deli Latin Food&nbsp;<div>786-589-0106<br><div><br></div></div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"94d68bf4-3efd-4a4e-9c55-8e08ad445f72","title":"2. DOMINICAN CHIMI ","type":"oval","x":85.526601098141,"y":86.17447899150564,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>2. Dominican Chimi&nbsp;</div><div>347-520-2108<br><div><br></div></div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"c4c298e4-4247-408b-8648-44711e3ffec4","title":"3. ASABY STREET FOOD","type":"oval","x":79.63129836460624,"y":84.49940290095225,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>3. ASABY STREET FOOD</div><div>407-994-3183</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"c7636828-e61a-4b7e-a735-72785d8f6040","title":"4. KING MASTER GRILL","type":"oval","x":75.88535481133626,"y":83.63226909782173,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>4. KING MASTER GRILL</div><div>787-638-5492</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"fcf00c96-bdf2-4624-b42c-fe49a1c45685","title":"5. ALANS BURGERS","type":"oval","x":63.79701822811113,"y":79.02224347706553,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>5. ALANS BURGERS</div><div>407-800-1909</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"c88a1665-8f46-4d2d-8818-9eda3e61dc41","title":"6. TACOS GONZALEZ","type":"oval","x":59.5964187481362,"y":77.6075840531788,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>6. TACOS GONZALEZ</div><div>407-558-4222</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"f4036db3-20f8-4ace-9e60-a551a370a8cf","title":"7. DAME UN NAQUI","type":"oval","x":42.94618606369984,"y":92.32411685250862,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>7. DAME UN NAQUI</div><div>407-738-2708</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"a63f6b40-324f-4e9e-9698-9ddfd5501cb8","title":"8. DULCE SAZON","type":"oval","x":35.84599280859714,"y":92.48877627639534,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>8. DULCE SAZON</div><div>787-638-0042</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"c21f8fe5-c662-4218-8180-077c38b9d32e","title":"9. TACOS PADRISIMO","type":"oval","x":33.09948795049229,"y":83.50521467140183,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>9. TACOS PADRISIMO</div><div>312-276-1353</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"333b64d1-abb2-4bac-bf2c-b5bd6a3ebea6","title":"10. ANTOJITOS DEL CARIBE","type":"oval","x":33.57118606369984,"y":70.03245018584197,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>10. ANTOJITOS DEL CARIBE</div><div>321-888-0169</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202},{"id":"7b878f38-3568-4d0b-a266-17f83701fb2b","title":"11. MR.JUICE","type":"oval","x":30.799959648605498,"y":62.115783519175295,"width":2.20371636738905,"height":3.880208086636356,"default_style":{"background_opacity":0},"mouseover_style":{"opacity":0.7792207792207793,"background_color":"#ffffff","background_opacity":1},"tooltip_style":{"border_radius":6,"padding":4,"background_opacity":0.7822167699420072},"tooltip_content":[{"type":"Heading","text":"<div>11. MR.JUICE</div><div>321-888-0169</div>","heading":"h3","other":{"id":"","classes":"","css":""},"style":{"fontFamily":"sans-serif","fontSize":19.8,"lineHeight":"normal","color":"#ffffff","textAlign":"left"},"boxModel":{"width":"auto","height":"auto","margin":{"top":0,"bottom":0,"left":0,"right":0},"padding":{"top":10,"bottom":10,"left":10,"right":10}},"id":"62637933-4cd1-409c-b1d1-fd82ab413b14"}],"x_image_background":94.32942643246133,"y_image_background":94.40790211945202}]}],"version":"6.0.4"})</script>
