@@ -9,12 +9,14 @@
             font-family: 'Roboto', sans-serif;
             font-size: 1.3em;
         }
+        #content-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;  /* Use the full viewport height */
+            justify-content: space-between;
+        }
         #message, #image-map-pro {
             display: none;
-            z-index: 2; /* Make sure the map and the message are above the back button */
-        }
-        #image-map-pro {
-            position: relative; /* Needed for z-index to work */
         }
         #message {
             color: white;
@@ -34,9 +36,7 @@
             margin-top: 26px;
         }
         #back-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
+            align-self: flex-end;
             padding: 10px 20px;
             background-color: red;
             color: white;
@@ -44,7 +44,7 @@
             font-size: 0.8em;
             text-decoration: none;
             transition: background-color 0.3s;
-            z-index: 1; /* Put the back button under the map */
+            margin: 20px; /* Adjust margin as needed */
         }
         #back-button:hover {
             background-color: darkred;
@@ -52,36 +52,37 @@
     </style>
 </head>
 <body>
-  <div id="image-map-pro"></div>
-  <div id="message">
-      <div><img id="logo" src="logo.png" alt="Logo"></div>
-      <div>Please rotate your device.</div>
-      <div><img id="rotate-logo" src="rotate.png" alt="Rotate"></div>
-  </div>
-  
-  <a id="back-button" href="http://www.worldfoodtrucks.com">Back</a>
-  
-  <script>
-    function checkOrientation() {
-        var isPortrait = window.matchMedia("(orientation: portrait)").matches;
-        var message = document.getElementById('message');
-        var data = document.getElementById('image-map-pro');
+    <div id="content-container">
+        <div id="image-map-pro"></div>
+        <div id="message">
+            <div><img id="logo" src="logo.png" alt="Logo"></div>
+            <div>Please rotate your device.</div>
+            <div><img id="rotate-logo" src="rotate.png" alt="Rotate"></div>
+        </div>
+        <a id="back-button" href="http://www.worldfoodtrucks.com">Back</a>
+    </div>
 
-        if (isPortrait) {
-            data.style.display = 'none';
-            message.style.display = 'block';
-        } else {
-            data.style.display = 'block';
-            message.style.display = 'none';
+    <script>
+        function checkOrientation() {
+            var isPortrait = window.matchMedia("(orientation: portrait)").matches;
+            var message = document.getElementById('message');
+            var data = document.getElementById('image-map-pro');
+
+            if (isPortrait) {
+                data.style.display = 'none';
+                message.style.display = 'block';
+            } else {
+                data.style.display = 'block';
+                message.style.display = 'none';
+            }
         }
-    }
 
-    window.addEventListener('orientationchange', checkOrientation);
-    window.addEventListener('resize', checkOrientation);
+        window.addEventListener('orientationchange', checkOrientation);
+        window.addEventListener('resize', checkOrientation);
 
-    // Check initial orientation
-    checkOrientation();
-  </script>
+        // Check initial orientation
+        checkOrientation();
+    </script>
 </body>
 
 <script src="image-map-pro.min.js"></script>
