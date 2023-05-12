@@ -7,7 +7,7 @@
         body {
             background-color: #1a1a1a;
             font-family: 'Roboto', sans-serif;
-            font-size: 1.3em; /* Increase font size by 30% */
+            font-size: 1.3em;
         }
         #message, #image-map-pro {
             display: none;
@@ -18,16 +18,32 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 1.6em; /* Increase font size by 30% */
+            font-size: 1.6em;
             text-align: center;
         }
         #logo {
-            width: 260px; /* Increase width by 30% */
-            margin-bottom: 26px; /* Increase margin by 30% */
+            width: 260px;
+            margin-bottom: 26px;
         }
         #rotate-logo {
-            width: 97.5px; /* Increase width by 30% */
-            margin-top: 26px; /* Increase margin by 30% */
+            width: 97.5px;
+            margin-top: 26px;
+        }
+        /* Add the following styles for your back button */
+        #back-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.8em;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        #back-button:hover {
+            background-color: darkred;
         }
     </style>
 </head>
@@ -38,6 +54,9 @@
       <div>Please rotate your device.</div>
       <div><img id="rotate-logo" src="rotate.png" alt="Rotate"></div>
   </div>
+  
+  <!-- Add the back button -->
+  <a id="back-button" href="http://www.worldfoodtrucks.com">Back</a>
   
   <script>
     function checkOrientation() {
