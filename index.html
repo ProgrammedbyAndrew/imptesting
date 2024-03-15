@@ -48,15 +48,15 @@
         #back-button:hover {
             background-color: darkred;
         }
-        #open-in-browser-btn {
+        #ig-instructions {
             background-color: red;
             color: white;
             padding: 15px 30px;
             font-size: 1.2em;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
             margin-top: 20px;
+            text-align: center;
         }
         /* Adjust the position of the back button for portrait orientation */
         @media (orientation: portrait) {
@@ -82,7 +82,10 @@
         </div>
         <div id="ig-message">
             The WFT map is not compatible with the Instagram browser. <br>
-            <button id="open-in-browser-btn" onclick="openInBrowser()">Open in Browser</button>
+            <div id="ig-instructions">
+                Copy this URL and paste it into your browser: <br>
+                https://programmedbyandrew.github.io/imptesting/
+            </div>
         </div>
         <a id="back-button" href="http://www.worldfoodtrucks.com">Back</a>
     </div>
@@ -113,17 +116,6 @@
             return /Instagram/.test(navigator.userAgent);
         }
 
-        function openInBrowser() {
-            var url = "https://programmedbyandrew.github.io/imptesting/";
-            // Attempt to use deep linking to open the URL in Chrome on iOS
-            if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
-                window.location.href = 'googlechrome://navigate?url=' + encodeURIComponent(url);
-            } else {
-                // Fallback to opening the URL in a new tab
-                window.open(url, '_blank');
-            }
-        }
-
         window.addEventListener('orientationchange', checkOrientation);
         window.addEventListener('resize', checkOrientation);
 
@@ -131,6 +123,8 @@
         checkOrientation();
     </script>
 </body>
+
+
 
 
 <script src="image-map-pro.min.js"></script>
