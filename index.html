@@ -115,11 +115,12 @@
 
         function openInBrowser() {
             var url = "https://programmedbyandrew.github.io/imptesting/";
-            // Attempt to open the URL in a new tab
-            var win = window.open(url, '_blank');
-            // If opening a new tab is blocked, try to redirect the current tab
-            if (!win) {
-                window.location.href = url;
+            // Attempt to use deep linking to open the URL in Chrome on iOS
+            if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                window.location.href = 'googlechrome://navigate?url=' + encodeURIComponent(url);
+            } else {
+                // Fallback to opening the URL in a new tab
+                window.open(url, '_blank');
             }
         }
 
@@ -130,7 +131,6 @@
         checkOrientation();
     </script>
 </body>
-
 
 
 <script src="image-map-pro.min.js"></script>
