@@ -48,6 +48,16 @@
         #back-button:hover {
             background-color: darkred;
         }
+        #open-in-browser-btn {
+            background-color: red;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
         /* Adjust the position of the back button for portrait orientation */
         @media (orientation: portrait) {
             #content-container {
@@ -72,7 +82,7 @@
         </div>
         <div id="ig-message">
             The WFT map is not compatible with the Instagram browser. <br>
-            <button onclick="openInBrowser()">Open in Browser</button>
+            <button id="open-in-browser-btn" onclick="openInBrowser()">Open in Browser</button>
         </div>
         <a id="back-button" href="http://www.worldfoodtrucks.com">Back</a>
     </div>
@@ -105,7 +115,12 @@
 
         function openInBrowser() {
             var url = "https://programmedbyandrew.github.io/imptesting/";
-            window.open(url, '_blank');
+            // Attempt to open the URL in a new tab
+            var win = window.open(url, '_blank');
+            // If opening a new tab is blocked, try to redirect the current tab
+            if (!win) {
+                window.location.href = url;
+            }
         }
 
         window.addEventListener('orientationchange', checkOrientation);
@@ -115,6 +130,8 @@
         checkOrientation();
     </script>
 </body>
+
+
 
 <script src="image-map-pro.min.js"></script>
 
