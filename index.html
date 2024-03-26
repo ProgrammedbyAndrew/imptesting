@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>World Food Trucks Interactive Map 1.02</title>
+    <title>World Food Trucks Interactive Map 1.02</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
         body {
@@ -14,16 +14,15 @@
             flex-direction: column;
             height: 100vh;
         }
-        #message, #image-map-pro {
+        #message, #image-map-pro, #ig-message {
             display: none;
         }
-        #message {
+        #message, #ig-message {
             color: white;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 1.6em;
             text-align: center;
         }
         #logo {
@@ -48,6 +47,25 @@
         #back-button:hover {
             background-color: darkred;
         }
+        #ig-message .not-compatible {
+            background-color: red;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.4em;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        #ig-instructions {
+            font-size: 1.2em;
+        }
+        .emoji {
+            display: inline-block;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
         /* Adjust the position of the back button for portrait orientation */
         @media (orientation: portrait) {
             #content-container {
@@ -70,6 +88,12 @@
             <div>Please rotate your device.</div>
             <div><img id="rotate-logo" src="rotate.png" alt="Rotate"></div>
         </div>
+        <div id="ig-message">
+            <div class="not-compatible">Sorry, the World Food Trucks map is not compatible with the Instagram browser. <span class="emoji">🙁</span></div>
+            <div id="ig-instructions">
+                To view the map, tap the three dots in the top right corner and select "Open in External Browser."
+            </div>
+        </div>
         <a id="back-button" href="http://www.worldfoodtrucks.com">Back</a>
     </div>
 
@@ -78,14 +102,25 @@
             var isPortrait = window.matchMedia("(orientation: portrait)").matches;
             var message = document.getElementById('message');
             var data = document.getElementById('image-map-pro');
+            var igMessage = document.getElementById('ig-message');
 
-            if (isPortrait) {
+            if (isInstagramBrowser()) {
+                igMessage.style.display = 'block';
+                data.style.display = 'none';
+                message.style.display = 'none';
+            } else if (isPortrait) {
                 data.style.display = 'none';
                 message.style.display = 'block';
+                igMessage.style.display = 'none';
             } else {
                 data.style.display = 'block';
                 message.style.display = 'none';
+                igMessage.style.display = 'none';
             }
+        }
+
+        function isInstagramBrowser() {
+            return /Instagram/.test(navigator.userAgent);
         }
 
         window.addEventListener('orientationchange', checkOrientation);
